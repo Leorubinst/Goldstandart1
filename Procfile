@@ -1,0 +1,1 @@
+web: python oracle_bot.py
