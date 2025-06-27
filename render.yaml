@@ -1,0 +1,8 @@
+services:
+  - type: web
+    name: oracle-bot
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python oracle_bot.py"
+    pythonVersion: 3.10
