@@ -1,11 +1,10 @@
-
 import asyncio
 import random
 from aiogram import Bot, Dispatcher, types
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
-from aiogram.utils import executor
+import os
 
-API_TOKEN = "7216222305:AAFGz_GZFhZtlgZMpkO69Unv-zrktXLd4u0"
+API_TOKEN = os.getenv("BOT_TOKEN", "7216222305:AAFGz_GZFhZtlgZMpkO69Unv-zrktXLd4u0")
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
@@ -51,7 +50,10 @@ async def reveal_prophecy(message: types.Message):
     await message.answer(f"🔔 *Оракул вещает:*\n\n{prophecy}", parse_mode="Markdown")
     user_states.pop(message.from_user.id, None)
 
-if __name__ == '__main__':
-    executor.start_polling(dp, skip_updates=True)
-# вызов Оракула для запуска Railway
+async def main():
+    await dp.start_polling()
+
+if __name__ == "__main__":
+    asyncio.run(main())
+
 
